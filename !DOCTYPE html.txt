@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard with Search Filters</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    h2 {
+      margin-top: 40px;
+    }
+    input[type="text"] {
+      margin-bottom: 10px;
+      padding: 8px;
+      width: 300px;
+      font-size: 14px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Team Dashboard</h1>
+
+  <!-- Sheet: CHARACTERISTIC -->
+  <h2>CHARACTERISTIC</h2>
+  <input type="text" id="searchCharacteristic" onkeyup="filterTable('searchCharacteristic', 'tableCharacteristic')" placeholder="Search CHARACTERISTIC...">
+  <table id="tableCharacteristic">
+    <thead>
+      <tr><th>Feature</th><th>Description</th><th>Category</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Speed</td><td>Fast response time</td><td>Performance</td></tr>
+      <tr><td>Security</td><td>Encrypted access</td><td>Compliance</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Sheet: Key Chars -->
+  <h2>Key Chars</h2>
+  <input type="text" id="searchKeyChars" onkeyup="filterTable('searchKeyChars', 'tableKeyChars')" placeholder="Search Key Chars...">
+  <table id="tableKeyChars">
+    <thead>
+      <tr><th>Key</th><th>Value</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>K1</td><td>Enabled</td><td>Default setting</td></tr>
+      <tr><td>K2</td><td>Disabled</td><td>Optional override</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Sheet: KP GUIDELINES -->
+  <h2>KP GUIDELINES</h2>
+  <input type="text" id="searchKPGuidelines" onkeyup="filterTable('searchKPGuidelines', 'tableKPGuidelines')" placeholder="Search KP GUIDELINES...">
+  <table id="tableKPGuidelines">
+    <thead>
+      <tr><th>Guideline</th><th>Details</th><th>Owner</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Data Entry</td><td>Use standard format</td><td>Priya</td></tr>
+      <tr><td>Review Cycle</td><td>Weekly check-ins</td><td>Arun</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Sheet: CCN -->
+  <h2>CCN</h2>
+  <input type="text" id="searchCCN" onkeyup="filterTable('searchCCN', 'tableCCN')" placeholder="Search CCN...">
+  <table id="tableCCN">
+    <thead>
+      <tr><th>Code</th><th>Name</th><th>Region</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>CCN001</td><td>Alpha</td><td>South</td></tr>
+      <tr><td>CCN002</td><td>Beta</td><td>North</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Sheet: IMPC -->
+  <h2>IMPC</h2>
+  <input type="text" id="searchIMPC" onkeyup="filterTable('searchIMPC', 'tableIMPC')" placeholder="Search IMPC...">
+  <table id="tableIMPC">
+    <thead>
+      <tr><th>Item</th><th>Code</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Module A</td><td>IMPC101</td><td>Active</td></tr>
+      <tr><td>Module B</td><td>IMPC102</td><td>Inactive</td></tr>
+    </tbody>
+  </table>
+
+  <script>
+    function filterTable(inputId, tableId) {
+      const input = document.getElementById(inputId);
+      const filter = input.value.toLowerCase();
+      const table = document.getElementById(tableId);
+      const rows = table.getElementsByTagName("tr");
+
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        let match = false;
+        for (let j = 0; j < cells.length; j++) {
+          if (cells[j] && cells[j].textContent.toLowerCase().includes(filter)) {
+            match = true;
+            break;
+          }
+        }
+        rows[i].style.display = match ? "" : "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
