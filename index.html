@@ -74,25 +74,26 @@
 <div class="tab-pane fade show active" id="tabCharacteristic">
   <input type="text" id="searchCharacteristic" onkeyup="filterTable('searchCharacteristic', 'tableCharacteristic')" placeholder="Search CHARACTERISTIC...">
   <table id="tableCharacteristic">
-    <thead>
-      <tr>
-        <th>CHAR</th>
-        <th>CHAR DEFINITION</th>
-        <th>HAND AND BODY LOTION AND OIL</th>
-        <th>SUNTAN AND AFTER TAN PREPARATION</th>
-        <th>DEPILATORY PRODUCT</th>
-        <th>SHAVING CREAM AND AFTER SHAVE</th>
-        <th>BATH ADDITIVE AND OIL</th>
-        <th>BODY POWDER PRODUCT</th>
-        <th>PETROLEUM JELLY PRODUCT</th>
-        <th>RAZORS</th>
-        <th>RAZOR BLADES</th>
-        <th>SHAVING ACCESSORY</th>
-        <th>PERSONAL CLEANSER OTHER THAN BAR</th>
-        <th>BLEACHING AND TONING PRODUCT</th>
-        <th>PERSONAL CLEANSER BAR AND NOVELTY SOAP</th>
-      </tr>
-    </thead>
+   <thead>
+  <tr>
+    <th>CHAR<br><select onchange="columnFilter(this, 0)"><option value="">All</option></select></th>
+    <th>CHAR DEFINITION<br><select onchange="columnFilter(this, 1)"><option value="">All</option></select></th>
+    <th>HAND AND BODY LOTION AND OIL<br><select onchange="columnFilter(this, 2)"><option value="">All</option></select></th>
+    <th>SUNTAN AND AFTER TAN PREPARATION<br><select onchange="columnFilter(this, 3)"><option value="">All</option></select></th>
+    <th>DEPILATORY PRODUCT<br><select onchange="columnFilter(this, 4)"><option value="">All</option></select></th>
+    <th>SHAVING CREAM AND AFTER SHAVE<br><select onchange="columnFilter(this, 5)"><option value="">All</option></select></th>
+    <th>BATH ADDITIVE AND OIL<br><select onchange="columnFilter(this, 6)"><option value="">All</option></select></th>
+    <th>BODY POWDER PRODUCT<br><select onchange="columnFilter(this, 7)"><option value="">All</option></select></th>
+    <th>PETROLEUM JELLY PRODUCT<br><select onchange="columnFilter(this, 8)"><option value="">All</option></select></th>
+    <th>RAZORS<br><select onchange="columnFilter(this, 9)"><option value="">All</option></select></th>
+    <th>RAZOR BLADES<br><select onchange="columnFilter(this, 10)"><option value="">All</option></select></th>
+    <th>SHAVING ACCESSORY<br><select onchange="columnFilter(this, 11)"><option value="">All</option></select></th>
+    <th>PERSONAL CLEANSER OTHER THAN BAR<br><select onchange="columnFilter(this, 12)"><option value="">All</option></select></th>
+    <th>BLEACHING AND TONING PRODUCT<br><select onchange="columnFilter(this, 13)"><option value="">All</option></select></th>
+    <th>PERSONAL CLEANSER BAR AND NOVELTY SOAP<br><select onchange="columnFilter(this, 14)"><option value="">All</option></select></th>
+  </tr>
+</thead>
+
     <tbody>
       <tr>
         <td>#US LOC APPLICATION AREA</td>
@@ -821,29 +822,47 @@
     </div>
   </div>
 
-  <script>
-    function filterTable(inputId, tableId) {
-      const input = document.getElementById(inputId);
-      const filter = input.value.toLowerCase();
-      const table = document.getElementById(tableId);
-      const rows = table.getElementsByTagName("tr");
+ <script>
+  function columnFilter(select, columnIndex) {
+    const filter = select.value.toLowerCase();
+    const table = select.closest("table");
+    const rows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
 
-      for (let i = 1; i < rows.length; i++) {
-        const cells = rows[i].getElementsByTagName("td");
-        let match = false;
-        for (let j = 0; j < cells.length; j++) {
-          if (cells[j] && cells[j].textContent.toLowerCase().includes(filter)) {
-            match = true;
-            break;
-          }
-        }
-        rows[i].style.display = match ? "" : "none";
-      }
+    for (let i = 0; i < rows.length; i++) {
+      const cell = rows[i].getElementsByTagName("td")[columnIndex];
+      const match = !filter || (cell && cell.textContent.toLowerCase().includes(filter));
+      rows[i].style.display = match ? "" : "none";
     }
-  </script>
+  }
+
+  // Auto-populate dropdowns with unique values
+  document.addEventListener("DOMContentLoaded", () => {
+    const table = document.getElementById("tableCharacteristic");
+    const headers = table.querySelectorAll("thead select");
+
+    headers.forEach((select, colIndex) => {
+      const values = new Set();
+      const rows = table.querySelectorAll("tbody tr");
+
+      rows.forEach(row => {
+        const cell = row.cells[colIndex];
+        if (cell) values.add(cell.textContent.trim());
+      });
+
+      [...values].sort().forEach(val => {
+        const option = document.createElement("option");
+        option.value = val;
+        option.textContent = val;
+        select.appendChild(option);
+      });
+    });
+  });
+</script>
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
 
 
