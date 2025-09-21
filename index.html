@@ -9,6 +9,7 @@
   <style>
     body { padding: 20px; }
     .tab-pane { padding-top: 20px; }
+    iframe { border: none; }
     canvas { max-width: 100%; }
   </style>
 </head>
@@ -18,90 +19,23 @@
 
     <ul class="nav nav-tabs" id="dashboardTabs" role="tablist">
       <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#slides">Training Slides</a></li>
-      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#definition">Definition</a></li>
-      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#characteristic">Characteristic</a></li>
-      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#keychars">Key Chars</a></li>
-      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#kp">KP Guidelines</a></li>
-      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#ccn">CCN</a></li>
-      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#impc">IMPC</a></li>
-      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#updates">General Updates</a></li>
+      <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#excel">Excel Dashboard</a></li>
     </ul>
 
     <div class="tab-content">
+      <!-- 🔹 Training Slides Tab -->
       <div class="tab-pane fade show active" id="slides">
         <h4>Training Slides</h4>
-        <iframe src="https://tamilarasan4654.github.io/skin-care-dashboard/" width="100%" height="600px" frameborder="0"></iframe>
+        <!-- ✅ Embedded PDF from same GitHub repo -->
+        <iframe src="SKIN%20CARE%20TRAINING%20DOCUMENT%20BY%20TAMILARASAN%20R%201.pdf" width="100%" height="600px"></iframe>
       </div>
 
-      <!-- Sheet Tabs -->
-      <div class="tab-pane fade" id="definition">
-        <h4>Definition</h4>
-        <input type="text" class="form-control mb-2" placeholder="Search Definition...">
-        <table class="table table-bordered">
-          <thead><tr><th>Term</th><th>Description</th></tr></thead>
-          <tbody><tr><td>Example</td><td>This is a placeholder</td></tr></tbody>
-        </table>
-        <canvas id="chart-definition"></canvas>
-      </div>
-
-      <div class="tab-pane fade" id="characteristic">
-        <h4>Characteristic</h4>
-        <input type="text" class="form-control mb-2" placeholder="Search Characteristic...">
-        <table class="table table-bordered">
-          <thead><tr><th>Feature</th><th>Details</th></tr></thead>
-          <tbody><tr><td>Example</td><td>This is a placeholder</td></tr></tbody>
-        </table>
-        <canvas id="chart-characteristic"></canvas>
-      </div>
-
-      <div class="tab-pane fade" id="keychars">
-        <h4>Key Chars</h4>
-        <input type="text" class="form-control mb-2" placeholder="Search Key Chars...">
-        <table class="table table-bordered">
-          <thead><tr><th>Key</th><th>Value</th></tr></thead>
-          <tbody><tr><td>Example</td><td>This is a placeholder</td></tr></tbody>
-        </table>
-        <canvas id="chart-keychars"></canvas>
-      </div>
-
-      <div class="tab-pane fade" id="kp">
-        <h4>KP Guidelines</h4>
-        <input type="text" class="form-control mb-2" placeholder="Search KP Guidelines...">
-        <table class="table table-bordered">
-          <thead><tr><th>Guideline</th><th>Note</th></tr></thead>
-          <tbody><tr><td>Example</td><td>This is a placeholder</td></tr></tbody>
-        </table>
-        <canvas id="chart-kp"></canvas>
-      </div>
-
-      <div class="tab-pane fade" id="ccn">
-        <h4>CCN</h4>
-        <input type="text" class="form-control mb-2" placeholder="Search CCN...">
-        <table class="table table-bordered">
-          <thead><tr><th>Code</th><th>Description</th></tr></thead>
-          <tbody><tr><td>Example</td><td>This is a placeholder</td></tr></tbody>
-        </table>
-        <canvas id="chart-ccn"></canvas>
-      </div>
-
-      <div class="tab-pane fade" id="impc">
-        <h4>IMPC</h4>
-        <input type="text" class="form-control mb-2" placeholder="Search IMPC...">
-        <table class="table table-bordered">
-          <thead><tr><th>Metric</th><th>Value</th></tr></thead>
-          <tbody><tr><td>Example</td><td>This is a placeholder</td></tr></tbody>
-        </table>
-        <canvas id="chart-impc"></canvas>
-      </div>
-
-      <div class="tab-pane fade" id="updates">
-        <h4>General Updates</h4>
-        <input type="text" class="form-control mb-2" placeholder="Search Updates...">
-        <table class="table table-bordered">
-          <thead><tr><th>Update</th><th>Date</th></tr></thead>
-          <tbody><tr><td>Example</td><td>2025-09-21</td></tr></tbody>
-        </table>
-        <canvas id="chart-updates"></canvas>
+      <!-- 🔹 Excel Dashboard Tab -->
+      <div class="tab-pane fade" id="excel">
+        <h4>Excel Dashboard</h4>
+        <!-- ✅ Link to download or view Excel file -->
+        <p>You can download or open the full Excel dashboard below:</p>
+        <a href="SKIN%20CARE%20COMPLETE%20DOCUMENT%20BY%20TAMILARASAN%20R.xlsx" target="_blank" class="btn btn-primary">Open Excel Dashboard</a>
       </div>
     </div>
   </div>
@@ -109,5 +43,3 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
